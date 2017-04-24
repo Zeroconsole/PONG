@@ -1,3 +1,5 @@
+#include <math.h>
+#include "graphics.h"
 int screenWidth;
 int screenHeight;
 int paddleWidth;
@@ -19,12 +21,14 @@ int paddleSpeed = 1;
 int ballSpeed = 2;
 double ballDirectionX = 1;
 double ballDirectionY = 1;
-double PI = 3.14159265358979323846264338327950288419716939937510
+double PI = 3.14159265358979323846264338327950288419716939937510;
 int player1Joystick;
 int player2Joystick;
 
 void drawPixel(int x, int y, int r, int g, int b) {
-    //TODO call Hanavan's code somehow
+    int color = (r * 256 * 256 * 256) + (g * 256 * 256); + (b * 256) + 255;
+    gfx_setColor(color); // ARGB for tv, RGBA for monitor
+    gfx_drawRect(x, y, 1, 1);
 }
 
 void drawRectangle(int x, int y, int width, int height, int r, int g, int b) {
@@ -37,11 +41,11 @@ void drawRectangle(int x, int y, int width, int height, int r, int g, int b) {
 
 void drawCircle(int x, int y, int diameter, int r, int g, int b) {
     for(double i = 0; i < PI; i += (PI / 8)) {
-        double sin = 0;//how in c? (should be sin(i))
-        double cos = 0;//how in c? (should be cos(i))
+        double sinOfi = sin(i);
+        double cosOfi = cos(i);
         for(int j = 0; j < (diameter / 2); j++) {
-            drawPixel(j * cos, j * sin, r, g, b);
-            drawPixel(-1 * j * cos, -1 * j * sin, r, g, b);
+            drawPixel(j * cosOfi, j * sinOfi, r, g, b);
+            drawPixel(-1 * j * cosOfi, -1 * j * sinOfi, r, g, b);
         }
     }
 }
@@ -75,7 +79,6 @@ void paint() {
 }
 
 void calculate() {
-    //TODO all calculations go here
     if(player1Joystick == -1) {
         paddle1Y += paddleSpeed;
     }
