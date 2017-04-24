@@ -32,18 +32,22 @@ void drawPixel(int x, int y, int r, int g, int b) {
 }
 
 void drawRectangle(int x, int y, int width, int height, int r, int g, int b) {
-    for(int i = 0; i < x; i++) {
-        for(int j = 0; j < y; j++) {
+    int i;
+    for(i = 0; i < x; i++) {
+        int j;
+        for(j = 0; j < y; j++) {
             drawPixel(i, j, r, g, b);
         }
     }
 }
 
 void drawCircle(int x, int y, int diameter, int r, int g, int b) {
-    for(double i = 0; i < PI; i += (PI / 8)) {
+    double i;
+    for(i = 0; i < PI; i += (PI / 8)) {
         double sinOfi = sin(i);
         double cosOfi = cos(i);
-        for(int j = 0; j < (diameter / 2); j++) {
+        int j;
+        for(j = 0; j < (diameter / 2); j++) {
             drawPixel(j * cosOfi, j * sinOfi, r, g, b);
             drawPixel(-1 * j * cosOfi, -1 * j * sinOfi, r, g, b);
         }
@@ -123,8 +127,6 @@ void calculate() {
             //If we want to make the ball act differently
             //based on where it hits the paddle we can do that here
         }
-        ballDirectionX *= -1;
-        ballDirectionY *= -1;
         ballDirectionX *= -1;
         ballDirectionY *= -1;
     }
