@@ -4,4 +4,6 @@ mv PiGraphics/*.c .
 mv PiGraphics/*.h .
 rm test.c
 make
-make clean
+LD_LIBRARY_PATH=.
+export LD_LIBRARY_PATH
+./game
