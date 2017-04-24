@@ -1,10 +1,10 @@
 all: pong
 
-pong: Game.o graphics.o
-	g++ Game.o graphics.o -o pong
+pong: game.o graphics.o
+	g++ game.o graphics.o -o pong
 
-Game.o: Game.c
-	g++ -c Game.c
+game.o: game.c
+	g++ -c game.c
 
 graphics.o: graphics.c
 	g++ -c graphics.c
