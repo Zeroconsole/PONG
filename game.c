@@ -138,9 +138,8 @@ void getInput() {
 }
 
 int main() {
-    //TODO initializations of variables
-    screenWidth = 0;// how in c?
-    screenHeight = 0;// how in c?
+    screenWidth = 1280;// how in c?
+    screenHeight = 720;// how in c?
     paddleWidth = screenWidth / (16 * 4);//adjust later
     paddleHeight = (4 * screenHeight) / (9 * 4);//adjust later
     ballRadius = screenWidth / (16 * 4);//adjust later
@@ -158,8 +157,9 @@ int main() {
     forgroundB = 0;//maybe adjust later
     player1Joystick = 0;
     player2Joystick = 0;
+    gfx_start("/dev/fb0");
     //TODO finish variable initializations
-    while(true) {
+    while(1 == 1) {
         getInput();
         calculate();
         paint();
