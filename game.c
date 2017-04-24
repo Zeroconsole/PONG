@@ -28,7 +28,7 @@ int player2Joystick;
 void drawPixel(int x, int y, int r, int g, int b) {
     int color = (r * 256 * 256 * 256) + (g * 256 * 256); + (b * 256) + 255;
     gfx_setColor(color); // ARGB for tv, RGBA for monitor
-    gfx_drawRect(x, y, 1, 1);
+    gfx_setPixel(x, y);
 }
 
 void drawRectangle(int x, int y, int width, int height, int r, int g, int b) {
