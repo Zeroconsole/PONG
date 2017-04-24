@@ -1,13 +1,16 @@
-all: pong
+LIB_OBJS = graphics.o
+TEST_OBJS = game.o
+LDFLAGS += -lm -L.
+CC = gcc
 
-pong: game.o graphics.o
-	g++ game.o graphics.o -o pong
+all: libgfx.so game
 
-game.o: game.c
-	g++ -c game.c
+game: $(TEST_OBJS) libgfx.so
+	$(CC) $(CFLAGS) -o $@ $(TEST_OBJS) -lgfx $(LDFLAGS)
 
-graphics.o: graphics.c
-	g++ -c graphics.c
+libgfx.so: $(LIB_OBJS)
+	$(CC) $(CFLAGS) -o $@ -shared $< $(LDFLAGS)
 
-clean:
-	rm -rf *o
+graphics.o: graphics.h
+
+game.o: graphics.h
