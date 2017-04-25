@@ -1,3 +1,5 @@
+#include <unistd.h>
+#include <stdio.h>
 #include <math.h>
 #include "graphics.h"
 int screenWidth;
@@ -135,6 +137,11 @@ void getInput() {
     //player2Joystick = (keyboardInput = "UP") ? 1 : ((keyboardInput = "DOWN") ? -1 : 0);
 }
 
+void function(int color) {
+    drawRectangle(0, 0, 100, 100, color);
+    sleep(1);
+}
+
 int main() {
     screenWidth = 1280;// how in c?
     screenHeight = 720;// how in c?
@@ -153,11 +160,23 @@ int main() {
     player2Joystick = 0;
     gfx_start("/dev/fb0");
     //TODO finish variable initializations
+    function(0xFFFFFFFF);
+    function(0x00FFFFFF);
+    function(0xFF00FFFF);
+    function(0xFFFF00FF);
+    function(0xFFFFFF00);
+    function(0x00000000);
+    function(0xFF000000);
+    function(0x00FF0000);
+    function(0x0000FF00);
+    function(0x000000FF);
+    /*
     while(1 == 1) {
         getInput();
         calculate();
         paint();
         //TODO add short pause of some sort
     }
+    */
     return 0;
 }
