@@ -112,33 +112,39 @@ void paintScore() {
     int i;
     int j;
     for(i = 1; i <= 5; i++) {
+      yOffset += i * pixelSize;
         //for(j = 1; j <= 3; j++) {
             //if(number[(i * j) - 1] == 1) {
                 drawRectangle(xOffset + ((i - 1) * pixelSize), yOffset + ((j - 1) * pixelSize), pixelSize, pixelSize, foregroundColor);
             //}
             if(number[i] == 0b000) {
-                //draw nothing
+              //do nothing
             }
             else if(number[i] == 0b001) {
-                drawRectangle(xOffset + (2 * pixelSize), yOffset + ((j - 1) * pixelSize), pixelSize, pixelSize, foregroundColor);
+                drawRectangle(xOffset + (2 * pixelSize), yOffset + (0 * pixelSize), pixelSize, pixelSize, foregroundColor);
             }
             else if(number[i] == 0b010) {
-                //stuff
+                drawRectangle(xOffset + (1 * pixelSize), yOffset + (0 * pixelSize), pixelSize, pixelSize, foregroundColor);
             }
             else if(number[i] == 0b011) {
-                //stuff
+                drawRectangle(xOffset + (1 * pixelSize), yOffset + (0 * pixelSize), pixelSize, pixelSize, foregroundColor);
+                drawRectangle(xOffset + (2 * pixelSize), yOffset + (0 * pixelSize), pixelSize, pixelSize, foregroundColor);
             }
             else if(number[i] == 0b100) {
-                //stuff
+                drawRectangle(xOffset + (0 * pixelSize), yOffset + (0 * pixelSize), pixelSize, pixelSize, foregroundColor);
             }
             else if(number[i] == 0b101) {
-                //stuff
+                drawRectangle(xOffset + (0 * pixelSize), yOffset + (0 * pixelSize), pixelSize, pixelSize, foregroundColor);
+                drawRectangle(xOffset + (2 * pixelSize), yOffset + (0 * pixelSize), pixelSize, pixelSize, foregroundColor);
             }
             else if(number[i] == 0b110) {
-                //stuff
+                drawRectangle(xOffset + (0 * pixelSize), yOffset + (0 * pixelSize), pixelSize, pixelSize, foregroundColor);
+                drawRectangle(xOffset + (1 * pixelSize), yOffset + (0 * pixelSize), pixelSize, pixelSize, foregroundColor);
             }
             else if(number[i] == 0b111) {
-                //stuff
+                drawRectangle(xOffset + (0 * pixelSize), yOffset + (0 * pixelSize), pixelSize, pixelSize, foregroundColor);
+                drawRectangle(xOffset + (1 * pixelSize), yOffset + (0 * pixelSize), pixelSize, pixelSize, foregroundColor);
+                drawRectangle(xOffset + (2 * pixelSize), yOffset + (0 * pixelSize), pixelSize, pixelSize, foregroundColor);
             }
         //}
     }
