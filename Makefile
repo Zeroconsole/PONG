@@ -1,5 +1,5 @@
 LIB_OBJS = graphics.o
-LIB_OBJS += rks.o
+#LIB_OBJS += rks.o
 TEST_OBJS = game.o
 LDFLAGS += -lm -L.
 CC = gcc
@@ -13,6 +13,6 @@ libgfx.so: $(LIB_OBJS)
 	$(CC) $(CFLAGS) -o $@ -shared $< $(LDFLAGS)
 
 graphics.o: graphics.h
-rks.o: rks.h
+#rks.o: rks.h
 
 game.o: graphics.h
