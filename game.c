@@ -258,8 +258,8 @@ void calculate() {
 void getInput() {
     //TODO interface with keyboard
     //http://ee.hawaii.edu/~tep/EE160/Book/chap4/subsection2.1.1.1.html
-    player1Joystick = (getkey() == 119) ? 1 : ((getkey() = 115) ? -1 : 0);
-    player2Joystick = (getkey() = 100) ? 1 : ((getkey() = 97) ? -1 : 0);
+    player1Joystick = (getkey() == 119) ? 1 : ((getkey() == 115) ? -1 : 0);
+    player2Joystick = (getkey() == 100) ? 1 : ((getkey() == 97) ? -1 : 0);
 }
 
 int main() {
