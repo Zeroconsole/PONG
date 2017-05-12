@@ -2,6 +2,35 @@
 #include <math.h>
 #include "graphics.h"
 #include <linux/fb.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <termios.h>
+#include <time.h>
+
+int getkey() {
+    int character;
+    struct termios orig_term_attr;
+    struct termios new_term_attr;
+
+    /* set the terminal to raw mode */
+    tcgetattr(fileno(stdin), &orig_term_attr);
+    memcpy(&new_term_attr, &orig_term_attr, sizeof(struct termios));
+    new_term_attr.c_lflag &= ~(ECHO|ICANON);
+    new_term_attr.c_cc[VTIME] = 0;
+    new_term_attr.c_cc[VMIN] = 0;
+    tcsetattr(fileno(stdin), TCSANOW, &new_term_attr);
+
+    /* read a character from the stdin stream without blocking */
+    /*   returns EOF (-1) if no character is available */
+    character = fgetc(stdin);
+
+    /* restore the original terminal attributes */
+    tcsetattr(fileno(stdin), TCSANOW, &orig_term_attr);
+
+    return character;
+}
+
 struct fb_var_screeninfo info;
 
 int numbers[10][5] = {
@@ -228,9 +257,9 @@ void calculate() {
 
 void getInput() {
     //TODO interface with keyboard
-    //pseudo code below
-    //player1Joystick = (keyboardInput = "W") ? 1 : ((keyboardInput = "S") ? -1 : 0);
-    //player2Joystick = (keyboardInput = "UP") ? 1 : ((keyboardInput = "DOWN") ? -1 : 0);
+    //http://ee.hawaii.edu/~tep/EE160/Book/chap4/subsection2.1.1.1.html
+    player1Joystick = (getkey() == 119) ? 1 : ((getkey() = 115) ? -1 : 0);
+    player2Joystick = (getkey() = 100) ? 1 : ((getkey() = 97) ? -1 : 0);
 }
 
 int main() {
